@@ -39,9 +39,9 @@ int main()
         cin >> choice;//get choice from menu
         switch (choice) {
             case 1: {//create user
-                User newUser;
-                users.push_back(newUser);
-                cout << "new user created: user " + newUser.intToString(newUser.getUId()) << endl;
+                User newUser;//create new user
+                users.push_back(newUser);//add to users vector
+                cout << "new user created: user " + newUser.intToString(newUser.getUId()) << endl;//display message
                 system("pause");
                 break;
             }
@@ -60,7 +60,7 @@ int main()
                 cin >> userChoice;//get index (user choice)
                 cout << "user " << choice << " selected" << endl;//show 'selected' message
                 user = users[userChoice];//set user - TODO: test this
-
+                //TODO: show error for 'out of range' selection
                 system("pause");
                 break;
             }
