@@ -12,6 +12,7 @@
 #include "User.h"
 using namespace std;
 
+//displays the menu within the console
 void showMenu() {
     cout << endl << endl;
     cout << "************ User management menu ************" << endl;
@@ -31,20 +32,20 @@ void showMenu() {
 int main()
 {
     int choice;//users choice and any values to get from the user
-    vector<User> users;
+    vector<User> users;//stores each created/selected user
     User user;//selected user
-    do {
-        showMenu();
-        cin >> choice;
+    do {//loop
+        showMenu();//show menu each loop
+        cin >> choice;//get choice from menu
         switch (choice) {
-            case 1: {
+            case 1: {//create user
                 User newUser;
                 users.push_back(newUser);
                 cout << "new user created: user " + newUser.intToString(newUser.getUId()) << endl;
                 system("pause");
                 break;
             }
-            case 2: {
+            case 2: {//select user - TODO: delete the forced setting of the user ID (used to test if this works with Vector<User>).
                 int count = 0,
                     userChoice;
                 for (User thisUser : users) {
@@ -52,22 +53,22 @@ int main()
                     thisUser.setUid(count + 6476);//TODO: remove before production
                     //and.. continue
                     cout << "select a user" << endl;
-                    cout << count << ". user " <<thisUser.intToString(thisUser.getUId())<< endl;
-                    count++;
+                    cout << count << ". user " <<thisUser.intToString(thisUser.getUId())<< endl;//show user by user ID
+                    count++;//used to track user index
                 }
                 cout << endl;
                 cin >> userChoice;//get index (user choice)
-                cout << "user " << choice << " selected" << endl;
+                cout << "user " << choice << " selected" << endl;//show 'selected' message
                 user = users[userChoice];//set user - TODO: test this
 
                 system("pause");
                 break;
             }
-            case 3:
+            case 3://delete user
                 cout << user.printError() << endl;
                 system("pause");
                 break;
-            case 4: {
+            case 4: {//set first name
                 string name;
                 cout << "enter the user's first name: " << endl;
                 cin >> name;
@@ -75,7 +76,7 @@ int main()
                 cout << "the user's first name has been changed: " << user.printError() << endl;
                 system("pause");
                 break;
-            }case 5: {
+            }case 5: {//set last name
                 string name;
                 cout << "enter the user's last name: " << endl;
                 cin >> name;
@@ -83,7 +84,7 @@ int main()
                 cout << "the user's last name has been changed: " << user.printError() << endl;
                 system("pause");
                 break;
-            }case 6: {
+            }case 6: {//set phone number
                 string phone;
                 cout << "enter the user's phone number: " << endl;
                 cin >> phone;
@@ -91,7 +92,7 @@ int main()
                 cout << "the user's phone number has been changed: " << user.printError() << endl;
                 system("pause");
                 break;
-            }case 7: {
+            }case 7: {//set Email
                 string email;
                 cout << "enter the user's Email: " << endl;
                 cin >> email;
@@ -99,15 +100,15 @@ int main()
                 cout << "the user's Email has been changed: " << user.printError() << endl;
                 system("pause");
                 break;
-            }case 8: {
+            }case 8: {//show all users
                 int count = 0;
                 for (User thisUser : users) {
                     cout << "user " << count+1 << ": " << thisUser.printError() << endl;
                 }
                 system("pause");
                 break;
-            }case 9: {
-                cout << user.printError() << endl;
+            }case 9: {//print selected user information
+                cout << user.print() << endl;
                 system("pause");
                 break;
             }case 10://prevent default and exit
